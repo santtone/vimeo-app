@@ -1,9 +1,11 @@
+'use strict';
+
 angular.module('vimeoApp', [
     'ngRoute'
   ])
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
-    when("/main",
+      when("/main",
       {
         templateUrl: "views/main.html",
         controller: "mainController"

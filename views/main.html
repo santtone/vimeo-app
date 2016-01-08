@@ -1,1 +1,21 @@
-<div>...</div>
+<div>
+    <div>
+        account: {{user.account}}
+        <br>
+        user: {{user.name}}
+    </div>
+    <br><br>
+    <div ng-repeat="video in videos">
+        <iframe
+                i-frame-handler
+                ng-src={{trustSrc(video.embedUrl)}}
+                width="300"
+                height="300"
+                frameborder="0"
+                webkitallowfullscreen
+                mozallowfullscreen
+                allowfullscreen
+                password="vane">
+        </iframe>
+    </div>
+</div>
