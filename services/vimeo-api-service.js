@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('vimeoApp')
-  .factory('vimeoApiService', ['$http', function ($http) {
+  .factory('vimeoApiService', ['$http', 'configService', function ($http, configService) {
 
-    var embedUrl = 'https://player.vimeo.com/video/';
-    var url = 'https://api.vimeo.com/me';
+    var embedUrl = configService.embedUrl;
+    var embedParams = configService.embedQueryParameters;
+    var url = configService.vimeoUserApi;
 
     function parseUserInfoResult(data) {
       return data.data;
@@ -15,7 +16,7 @@ angular.module('vimeoApp')
       return _.each(videos, function (v) {
         var id = v.uri.substring(v.uri.lastIndexOf('/') + 1);
         v.id = id;
-        v.embedUrl = embedUrl + id;
+        v.embedUrl = embedUrl + id + embedParams;
       })
     }
 

@@ -1,21 +1,16 @@
 'use strict';
 
 angular.module('vimeoApp')
-  .controller('mainController', ['$scope', 'userService', '$sce', function ($scope, userService, $sce) {
+  .controller('mainController', ['$scope', 'userService', 'configService', '$sce',
+    function ($scope, userService, configService, $sce) {
 
     $scope.user = null;
     $scope.videos = [];
-
-    function queryParameters() {
-      return '?loop=1'
-    }
+    $scope.videoPassword = configService.videoPassword;
 
     userService.getVimeoUser().then(function (u) {
       $scope.user = u;
       userService.getUserVideos().then(function (vv) {
-        _.each(vv, function (v) {
-          v.embedUrl = v.embedUrl + queryParameters();
-        });
         $scope.videos = vv;
       });
     });

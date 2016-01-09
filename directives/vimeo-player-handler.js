@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('vimeoApp')
-  .directive('iFrameHandler', [function () {
+  .directive('vimeoPlayerHandler', [function () {
     return {
       restrict: 'A',
       link: function (scope, element, attrs) {

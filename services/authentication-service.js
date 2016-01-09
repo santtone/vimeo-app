@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('vimeoApp')
-  .factory('authenticationService', ['$http', function ($http) {
+  .factory('authenticationService', ['$http', 'configService', function ($http, configService) {
 
-    var url = 'https://api.vimeo.com';
+    var url = configService.vimeoBaseApi;
 
     function saveAuthentication(authorization) {
       $http.defaults.headers.common.Authorization = authorization;
